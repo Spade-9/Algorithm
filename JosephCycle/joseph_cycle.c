@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 // 约瑟夫环算法-1创建环
 int create_joseph_cycle(int a[], int n)
