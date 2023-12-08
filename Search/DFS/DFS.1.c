@@ -7,14 +7,18 @@
 int arr[100];         // 给定的整数数组
 int visit[100] = {0}; // visit[]表示某一个下标有没有被访问过
 int n, k;
-int cnt = 0;     // cnt用于计数，计数一共计算了几次sum，即取出了多少个数组
-int ans[100000]; // ans[cnt]用来存储答案sum,ans数组的大小要开的足够大。
+int cnt = 0;       // cnt用于计数，计数一共计算了几次sum，即取出了多少个数组
+int subarray[100]; // 子数组
+int ans[100000];   // ans[cnt]用来存储答案sum,ans数组的大小要开的足够大。
 void dfs(int step, int sum)
 {
     // step 表示搜索深度, sum 记录当前搜索深度的总和
     if (step == k)
     {
-        ans[cnt++] = sum; // 记录答案
+        ans[cnt++] = sum;           // 记录答案
+        for (int i = 0; i < k; i++) // 打印子数组
+            printf("%d ", subarray[i]);
+        printf("\n");
         return;
     }
     for (int i = 0; i < n; i++)
@@ -22,6 +26,7 @@ void dfs(int step, int sum)
         if (!visit[i]) // 如果下标i没有访问过
         {
             visit[i] = 1;                // 把下标i标记成访问过
+            subarray[step] = arr[i];     // 将当前搜索深度搜到的数据存入子数组
             dfs(step + 1, sum + arr[i]); // 把arr[i]加到sum里，递归
             visit[i] = 0;                // 恢复下标i为未访问的状态
         }
