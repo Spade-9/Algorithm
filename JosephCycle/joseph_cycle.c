@@ -18,8 +18,8 @@ void josephCycle(int a[], int n, int m)
     i = n; // 预备从1号开始的前编号
     while (a[i] != i)
     {
-        count++; // 报数
-        prei = i;
+        count++;  // 报数
+        prei = i; // 取出猴子编号
         i = a[i]; // 找下一个
         if (count % m == 0)
         { // 出圈
